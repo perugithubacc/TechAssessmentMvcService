@@ -10,7 +10,6 @@ This is a Spring Boot application for managing customers and products. It levera
 - [Running the Application](#running-the-application)
 - [API Documentation](#api-documentation)
 - [Building the Project](#building-the-project)
-- [License](#license)
 
 ## Features
 
