@@ -1,0 +1,81 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: TechAssessmentMvcService
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres_pwd
+    url: jdbc:postgresql://localhost:5432/tech_assessment_db
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 30000
+      max-lifetime: 2000000
+      connection-timeout: 30000
+      pool-name: HikariPool
+      data-source-properties:
+        socketTimeout: 600
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate.jdbc.time.zone: Asia/Kuala_Lumpur
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  cache:
+    redis:
+      time-to-live: 20s
+      cache-null-values: false
+      use-key-prefix: true
+  data:
+    redis:
+      host: localhost
+      database: 0
+      port: 6379
+      timeout: 60000
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+      username: default
+      password: redis_pwd
+
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092"
+    producer:
+      keySerializer: "org.apache.kafka.common.serialization.StringSerializer"
+      valueSerializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+    consumer:
+      group-id: "tech-assessment"
+      keyDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      valueDeserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      autoOffsetReset: "earliest"
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+        specific:
+          avro:
+            reader: "true"
+    tech-assessment:
+      customer-topic:
+        topic-name: customer
+        group-id: customer-group
+        partition: 2
+        concurrency: 3
+      product-topic:
+        topic-name: product
+        group-id: product-group
+        partition: 2
+        concurrency: 3

@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "type": "record",
+  "name": "Customer",
+  "namespace": "com.assessment.techassessmentmvcservice.avromodel",
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "firstName", "type": "string"},
+    {"name": "lastName", "type": "string"},
+    {
+      "name": "dob",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {"name": "documentID", "type": "string"},
+    {"name": "address", "type": "string"},
+    {"name": "email", "type": "string"}
+  ]
+}

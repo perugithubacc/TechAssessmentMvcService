@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "type": "record",
+  "name": "Product",
+  "namespace": "com.assessment.techassessmentmvcservice.avromodel",
+  "fields": [
+    {
+      "name": "productId",
+      "type": "string"
+    },
+    {
+      "name": "productCode",
+      "type": "string"
+    },
+    {
+      "name": "productName",
+      "type": "string"
+    },
+    {
+      "name": "productDescription",
+      "type": "string"
+    },
+    {
+      "name": "productPrice",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 18,
+        "scale": 2
+      }
+    },
+    {
+      "name": "productQuantity",
+      "type": "int"
+    }
+  ]
+}
