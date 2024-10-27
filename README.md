@@ -15,6 +15,7 @@ This is a Spring Boot application for managing customers and products. It levera
 ## Features
 
 - Manage customers and products through a RESTful API.
+- Added Redis for caching and Kafka for event processing.
 - Swagger documentation for easy exploration of API endpoints.
 - Uses Docker Compose for container orchestration.
 - Built with Maven for easy dependency management.
