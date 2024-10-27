@@ -6,7 +6,8 @@
   "fields": [
     {
       "name": "productId",
-      "type": "string"
+      "type": "string",
+
     },
     {
       "name": "productCode",
