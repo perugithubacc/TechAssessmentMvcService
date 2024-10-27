@@ -18,7 +18,7 @@ public class DynamicSearchSpecifications {
                     return cb.like(cb.lower(root.get(field)), "%" + value.toLowerCase() + "%");
                 }
             } catch (NoSuchFieldException e) {
-                log.error("Unsupported field: " + field);
+                log.error("Unsupported field: {}", field);
                 throw new IllegalArgumentException("Unsupported field: " + field);
             }
             return null;
