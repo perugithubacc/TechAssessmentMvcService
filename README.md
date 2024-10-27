@@ -49,7 +49,7 @@ This command will start all required services defined in the docker-compose.yml 
 The API is documented using Swagger. Once the application is running, you can access the documentation at:
 
 ```bash
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/swagger-ui/index.html
 ```
 
 ## Building the Project
