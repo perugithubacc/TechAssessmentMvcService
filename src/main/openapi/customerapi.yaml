@@ -52,6 +52,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Customer'
+  /customers/submit:
+    post:
+      summary: Submit new customer creation by Kafka event
+      operationId: submitNewCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Customer creation submitted
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Customer creation submitted"
   /customers/search:
     get:
       summary: Search customers by field and value

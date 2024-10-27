@@ -1,5 +1,6 @@
 package com.assessment.techassessmentmvcservice.entity;
 
+import com.assessment.techassessmentmvcservice.model.CustomerRecord;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techassessment.techassessmentmvcservice.model.Customer;
@@ -133,6 +134,50 @@ public class CustomerEntity {
                     .documentId(customer.getDocumentId())
                     .birthday(customer.getBirthday())
                     .gender(customer.getGender().getValue())
+                    .customerType(customer.getCustomerType())
+                    .officeEmail(customer.getOfficeEmail())
+                    .personalEmail(customer.getPersonalEmail())
+                    .mobileNumber(customer.getMobileNumber())
+                    .officeNumber(customer.getOfficeNumber())
+                    .familyMembers(new ObjectMapper().writeValueAsString(customer.getFamilyMembers()))
+                    .address(new ObjectMapper().writeValueAsString(customer.getAddress()))
+                    .build();
+        } catch (JsonProcessingException ex) {
+            throw new RuntimeException("Json processing exception occurred: " + customer.getCustomerId());
+        }
+    }
+
+    public static CustomerRecord toRecord(Customer customer) {
+        CustomerRecord customerRecord = new CustomerRecord();
+        try {
+            customerRecord.setFirstName(customer.getFirstName());
+            customerRecord.setMiddleName(customer.getMiddleName());
+            customerRecord.setLastName(customer.getLastName());
+            customerRecord.setDocumentId(customer.getDocumentId());
+            customerRecord.setBirthday(customer.getBirthday());
+            customerRecord.setGender(customer.getGender().getValue());
+            customerRecord.setMobileNumber(customer.getMobileNumber());
+            customerRecord.setOfficeNumber(customer.getOfficeNumber());
+            customerRecord.setOfficeEmail(customer.getOfficeEmail());
+            customerRecord.setPersonalEmail(customer.getPersonalEmail());
+            customerRecord.setCustomerType(customer.getCustomerType());
+            customerRecord.setFamilyMembers(new ObjectMapper().writeValueAsString(customer.getFamilyMembers()));
+            customerRecord.setAddress(new ObjectMapper().writeValueAsString(customer.getAddress()));
+        } catch (JsonProcessingException ex) {
+            throw new RuntimeException("Json processing exception occurred: " + customer.getCustomerId());
+        }
+        return customerRecord;
+    }
+
+    public static CustomerEntity toEntity(CustomerRecord customer)  {
+        try {
+            return CustomerEntity.builder()
+                    .firstName(customer.getFirstName())
+                    .middleName(customer.getMiddleName())
+                    .lastName(customer.getLastName())
+                    .documentId(customer.getDocumentId())
+                    .birthday(customer.getBirthday())
+                    .gender(customer.getGender())
                     .customerType(customer.getCustomerType())
                     .officeEmail(customer.getOfficeEmail())
                     .personalEmail(customer.getPersonalEmail())

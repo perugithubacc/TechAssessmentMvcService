@@ -72,10 +72,8 @@ spring:
       customer-topic:
         topic-name: customer
         group-id: customer-group
-        partition: 2
         concurrency: 3
       product-topic:
         topic-name: product
         group-id: product-group
-        partition: 2
         concurrency: 3

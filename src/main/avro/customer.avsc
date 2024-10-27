@@ -1,21 +1,95 @@
 {
   "version": "1.0.0",
   "type": "record",
-  "name": "Customer",
-  "namespace": "com.assessment.techassessmentmvcservice.avromodel",
+  "name": "CustomerRecord",
+  "namespace": "com.assessment.techassessmentmvcservice.model",
   "fields": [
-    {"name": "id", "type": "string"},
-    {"name": "firstName", "type": "string"},
-    {"name": "lastName", "type": "string"},
     {
-      "name": "dob",
+      "name": "customerId",
+      "type": "long"
+    },
+    {
+      "name": "documentId",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "type": "string"
+    },
+    {
+      "name": "middleName",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "lastName",
+      "type": "string"
+    },
+    {
+      "name": "gender",
+      "type": "string"
+    },
+    {
+      "name": "birthday",
       "type": {
         "type": "int",
         "logicalType": "date"
       }
     },
-    {"name": "documentID", "type": "string"},
-    {"name": "address", "type": "string"},
-    {"name": "email", "type": "string"}
+    {
+      "name": "mobileNumber",
+      "type": "string"
+    },
+    {
+      "name": "officeNumber",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "personalEmail",
+      "type": "string"
+    },
+    {
+      "name": "officeEmail",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "familyMembers",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "address",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "customerType",
+      "type": "string"
+    },
+    {
+      "name": "age",
+      "type": [
+        "null",
+        "int"
+      ],
+      "default": null
+    }
   ]
 }

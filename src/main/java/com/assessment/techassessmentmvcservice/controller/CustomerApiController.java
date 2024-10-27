@@ -1,5 +1,6 @@
 package com.assessment.techassessmentmvcservice.controller;
 
+import com.assessment.techassessmentmvcservice.service.CustomerProducerService;
 import com.assessment.techassessmentmvcservice.service.CustomerService;
 import com.techassessment.techassessmentmvcservice.api.CustomersApi;
 import com.techassessment.techassessmentmvcservice.model.Customer;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerApiController implements CustomersApi {
 
     private final CustomerService customerService;
+    private final CustomerProducerService customerProducerService;
 
-    public CustomerApiController(CustomerService customerService) {
+    public CustomerApiController(CustomerService customerService, CustomerProducerService customerProducerService) {
         this.customerService = customerService;
+        this.customerProducerService = customerProducerService;
     }
 
     @Override
@@ -49,5 +52,11 @@ public class CustomerApiController implements CustomersApi {
     @Override
     public ResponseEntity<List<Customer>> searchCustomers(String field, String value) {
         return ResponseEntity.ok(customerService.searchCustomers(field, value));
+    }
+
+    @Override
+    public ResponseEntity<String> submitNewCustomer(Customer customer) {
+        customerProducerService.publish(customer);
+        return ResponseEntity.ok("Customer creation submitted");
     }
 }

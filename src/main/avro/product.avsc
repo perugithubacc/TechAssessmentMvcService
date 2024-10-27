@@ -1,13 +1,12 @@
 {
   "version": "1.0.0",
   "type": "record",
-  "name": "Product",
-  "namespace": "com.assessment.techassessmentmvcservice.avromodel",
+  "name": "ProductRecord",
+  "namespace": "com.assessment.techassessmentmvcservice.model",
   "fields": [
     {
       "name": "productId",
-      "type": "string",
-
+      "type": "string"
     },
     {
       "name": "productCode",
@@ -19,7 +18,11 @@
     },
     {
       "name": "productDescription",
-      "type": "string"
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
     },
     {
       "name": "productPrice",
@@ -33,6 +36,10 @@
     {
       "name": "productQuantity",
       "type": "int"
+    },
+    {
+      "name": "productType",
+      "type": "string"
     }
   ]
 }
