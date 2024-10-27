@@ -8,7 +8,6 @@ import com.assessment.techassessmentmvcservice.spec.DynamicSearchSpecifications;
 import com.techassessment.techassessmentmvcservice.model.Product;
 import java.util.List;
 import java.util.UUID;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,7 @@ public class ProductServiceImpl implements ProductService{
         return product;
     }
 
-    @CachePut(value = "products", key = "#product.productId")
+    @CachePut(value = "products", key = "#productId")
     @Override
     public Product updateProduct(String productId, Product product) {
         log.info("Updating product info for productId: {}", productId);

@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
         return customer;
     }
 
-    @CachePut(value = "customers", key = "#customer.customerId")
+    @CachePut(value = "customers", key = "#customerId")
     @Override
     public Customer updateCustomer(String customerId, Customer customer) {
         log.info("Updating customer info for customerId: {}", customerId);

@@ -27,7 +27,6 @@ import org.hibernate.Hibernate;
 @ToString
 public class ProductEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productId;
 
     @Column(name = "product_code", nullable = false, unique = true)

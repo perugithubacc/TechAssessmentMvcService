@@ -1,4 +1,4 @@
-# Tech Assessment Service
+# Tech Assessment Mvc Service
 
 This is a Spring Boot application for managing customers and products. It leverages Maven for building and Docker Compose for managing services. The application is built using Java 17.
 
@@ -13,7 +13,7 @@ This is a Spring Boot application for managing customers and products. It levera
 
 ## Features
 
-- Manage customers and products through a RESTful API.
+- Manage customers and products through an MVC RESTful API.
 - Added Redis for caching and Kafka for event processing.
 - Swagger documentation for easy exploration of API endpoints.
 - Uses Docker Compose for container orchestration.
