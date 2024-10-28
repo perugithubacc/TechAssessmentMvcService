@@ -55,6 +55,7 @@ public class ProductServiceImpl implements ProductService{
                                 product.getProductId())
                 );
         ProductEntity newProductInfo = new ProductEntity().toEntity(product);
+        newProductInfo.setProductId(productId);
         if (!existingProductInfo.equals(newProductInfo)) {
             return productRepository.save(newProductInfo).toDto();
         } else {
