@@ -60,6 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
                                 customer.getCustomerId())
                 );
         CustomerEntity newCustomerInfo = new CustomerEntity().toEntity(customer);
+        newCustomerInfo.setCustomerId(Long.valueOf(customerId));
         if (!existingCustomerInfo.equals(newCustomerInfo)) {
             return customerRepository.save(newCustomerInfo).toDto();
         } else {

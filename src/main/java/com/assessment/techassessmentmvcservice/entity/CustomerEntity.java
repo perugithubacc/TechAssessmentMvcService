@@ -14,14 +14,13 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
-import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.Hibernate;
 
 
 @Entity
@@ -32,6 +31,7 @@ import org.hibernate.Hibernate;
 @Getter
 @Builder
 @ToString
+@EqualsAndHashCode
 public class CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_seq")
@@ -80,19 +80,6 @@ public class CustomerEntity {
 
     @Column(name = "age")
     private Integer age;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        CustomerEntity that = (CustomerEntity) o;
-        return getCustomerId() != null && Objects.equals(getCustomerId(), that.getCustomerId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 
     public Customer toDto() {
         try {
